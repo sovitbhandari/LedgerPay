@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LedgerPay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true"></div>
+  <header class="top">
+    <p class="status" id="health">checking…</p>
+  </header>
+
+  <main class="stage">
+    <section class="hero">
+      <p class="eyebrow">Synthetic funds only</p>
+      <h1>LedgerPay</h1>
+      <p class="lede">A double-entry practice ledger. Open an account, fund it, and move money with balanced debit and credit lines.</p>
+    </section>
+
+    <section class="workspace" aria-label="Ledger console">
+      <form id="auth-form" class="panel">
+        <h2>Sign in</h2>
+        <label>Email <input id="email" type="email" autocomplete="username" value="demo@example.com" required /></label>
+        <label>Password <input id="password" type="password" autocomplete="current-password" value="Password12345" required minlength="12" /></label>
+        <div class="actions">
+          <button type="submit" data-action="login">Log in</button>
+          <button type="button" class="ghost" id="register-btn">Register</button>
+        </div>
+        <p class="hint" id="session">Not signed in</p>
+      </form>
+
+      <form id="account-form" class="panel">
+        <h2>Account</h2>
+        <label>Name <input id="account-name" value="Spending" required maxlength="80" /></label>
+        <label>Currency
+          <select id="currency">
+            <option>USD</option>
+            <option>EUR</option>
+            <option>GBP</option>
+            <option>JPY</option>
+          </select>
+        </label>
+        <div class="actions">
+          <button type="submit">Create account</button>
+          <button type="button" class="ghost" id="refresh-btn">Refresh</button>
+        </div>
+        <ul id="accounts" class="list"></ul>
+      </form>
+
+      <form id="money-form" class="panel">
+        <h2>Move money</h2>
+        <label>Account
+          <select id="selected-account"></select>
+        </label>
+        <label>Deposit amount <input id="deposit-amount" value="25.00" required /></label>
+        <div class="actions">
+          <button type="button" id="deposit-btn">Deposit</button>
+        </div>
+        <label>Transfer to account id <input id="dest-account" placeholder="paste destination UUID" /></label>
+        <label>Transfer amount <input id="transfer-amount" value="10.50" /></label>
+        <div class="actions">
+          <button type="button" id="transfer-btn">Transfer</button>
+        </div>
+        <p class="balance" id="balance">Balance —</p>
+      </form>
+
+      <aside class="panel log-panel">
+        <h2>Activity</h2>
+        <pre id="log" class="log"></pre>
+      </aside>
+    </section>
+  </main>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

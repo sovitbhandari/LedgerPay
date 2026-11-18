@@ -4,6 +4,10 @@ Educational double-entry ledger for synthetic funds. It is an internal practice 
 
 Customers hold accounts. A transfer debits one customer account and credits another in the same database transaction. Synthetic deposits credit a customer account and debit a per-currency system funding account, which is allowed to go negative so the books stay balanced. Every persisted movement is one `DEBIT` and one `CREDIT` of the same minor-unit amount.
 
+![LedgerPay local demo UI](docs/ledgerpay-ui.jpg)
+
+The app also serves a small browser console at `/` for local demos. The HTTP API remains the primary interface.
+
 ## Stack
 
 - Java 21, Maven, Spring Boot 4.1.2
