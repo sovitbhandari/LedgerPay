@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:1/ledgerpay_tests_not_started
+    username: ledgerpay
+    password: ledgerpay
+    hikari:
+      maximum-pool-size: 32
+      connection-timeout: 10000
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.jdbc.time_zone: UTC
+
+ledgerpay:
+  jwt:
+    secret: test-secret-key-must-be-at-least-32-bytes
+    ttl: 1h
+
+logging:
+  level:
+    org.hibernate.SQL: warn
+    org.testcontainers: info

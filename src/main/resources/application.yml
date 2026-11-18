@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: ledgerpay
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/ledgerpay}
+    username: ${SPRING_DATASOURCE_USERNAME:ledgerpay}
+    password: ${SPRING_DATASOURCE_PASSWORD:ledgerpay}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  flyway:
+    enabled: true
+    clean-disabled: true
+  jackson:
+    default-property-inclusion: non_null
+  mvc:
+    problemdetails:
+      enabled: false
+
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: never
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: LedgerPay
+    description: Educational internal ledger. Synthetic funds only.
+
+ledgerpay:
+  jwt:
+    # Local default only. Override LEDGERPAY_JWT_SECRET outside a personal machine.
+    secret: ${LEDGERPAY_JWT_SECRET:dev-only-ledgerpay-jwt-secret-change-me}
+    ttl: ${LEDGERPAY_JWT_TTL:1h}
+
+logging:
+  level:
+    org.hibernate.SQL: warn

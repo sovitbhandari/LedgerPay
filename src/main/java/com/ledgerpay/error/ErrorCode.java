@@ -1,0 +1,41 @@
+package com.ledgerpay.error;
+
+import org.springframework.http.HttpStatus;
+
+public enum ErrorCode {
+    VALIDATION_ERROR(HttpStatus.BAD_REQUEST),
+    MALFORMED_JSON(HttpStatus.BAD_REQUEST),
+    IDEMPOTENCY_KEY_REQUIRED(HttpStatus.BAD_REQUEST),
+    IDEMPOTENCY_KEY_INVALID(HttpStatus.BAD_REQUEST),
+    INVALID_AMOUNT(HttpStatus.BAD_REQUEST),
+    UNSUPPORTED_CURRENCY(HttpStatus.BAD_REQUEST),
+    UNAUTHENTICATED(HttpStatus.UNAUTHORIZED),
+    INVALID_CREDENTIALS(HttpStatus.UNAUTHORIZED),
+    OWNERSHIP_VIOLATION(HttpStatus.FORBIDDEN),
+    ACCOUNT_NOT_FOUND(HttpStatus.NOT_FOUND),
+    TRANSFER_NOT_FOUND(HttpStatus.NOT_FOUND),
+    NOT_FOUND(HttpStatus.NOT_FOUND),
+    METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED),
+    UNSUPPORTED_MEDIA_TYPE(HttpStatus.UNSUPPORTED_MEDIA_TYPE),
+    IDEMPOTENCY_KEY_REUSED(HttpStatus.CONFLICT),
+    INSUFFICIENT_FUNDS(HttpStatus.CONFLICT),
+    EMAIL_ALREADY_REGISTERED(HttpStatus.CONFLICT),
+    LOCK_TIMEOUT(HttpStatus.CONFLICT),
+    DATA_CONFLICT(HttpStatus.CONFLICT),
+    ACCESS_DENIED(HttpStatus.FORBIDDEN),
+    ACCOUNT_NOT_ACTIVE(HttpStatus.UNPROCESSABLE_ENTITY),
+    CURRENCY_MISMATCH(HttpStatus.UNPROCESSABLE_ENTITY),
+    SAME_ACCOUNT(HttpStatus.UNPROCESSABLE_ENTITY),
+    INVALID_STATUS_TRANSITION(HttpStatus.UNPROCESSABLE_ENTITY),
+    INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR);
+
+    private final HttpStatus status;
+
+    ErrorCode(HttpStatus status) {
+        this.status = status;
+    }
+
+    public HttpStatus status() {
+        return status;
+    }
+}
